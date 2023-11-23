@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import StringVar, Label, Frame, Scrollbar, ttk
+from tkinter import StringVar, Label, Frame, Scrollbar, ttk, RIDGE
 from tkinter import W
 import random
 import time
@@ -144,7 +144,7 @@ class Hospital(tk.Tk):
         #Column: The grid is being counted by index 0, 1 , 2. Example Label can be index one and to place the box next to it, it would be the next column of 2.
 
         #Tablet Picklist Field
-        self.cboNameTablet= ttk.Combobox(DataFrameLEFT, textvariable=self.cmbNameTablets, state='readonly',font=('arial', 12, 'bold'), width=20)
+        self.cboNameTablet= ttk.Combobox(DataFrameLEFT, textvariable=self.cmbNameTablets, state='readonly',font=('arial', 12, 'bold'), width=24)
         self.cboNameTablet['value']=('','Ibuprofen','Co-codamol','Paracetamo','Amlodipine')
         self.cboNameTablet.current(0)
         self.cboNameTablet.grid(row=0, column=1)
@@ -254,7 +254,7 @@ class Hospital(tk.Tk):
         #DOB Field
         self.lblDOB = Label(DataFrameLEFT, font=('arial', 12, 'bold'), text="Date of Birth (DOB):", padx=2, pady=2)
         self.lblDOB.grid(row=10, column=0, sticky=W)
-        self.txtDOB = ttk.Entry(DataFrameLEFT, font=('arial', 12, 'bold'), textvariable=self.DateofBirth)
+        self.txtDOB = ttk.Entry(DataFrameLEFT, font=('arial', 12, 'bold'), textvariable=self.DateofBirth, width=25)
         self.txtDOB.grid(row=10, column=1, padx=2, pady=2)
 
         #Patient Address Field
@@ -268,29 +268,40 @@ class Hospital(tk.Tk):
         self.txtPrescription.grid(row=0, column=0)
 
         #===============================================BUTTONFRAME=========================================
-        self.btnPrescription=tk.Button(ButtonFrame, text='Prescription', font=('arial', 12, 'bold'), width=20, bd=4, 
+        self.btnPrescription=tk.Button(ButtonFrame, text='Prescription', font=('arial', 12, 'bold'), width=13, bd=4, 
                                        command=iPrescription)
         self.btnPrescription.grid(row=0, column=0)
         
-        self.btnSave=tk.Button(ButtonFrame, text='Save', font=('arial', 12, 'bold'), width=20, bd=4,
+        self.btnSave=tk.Button(ButtonFrame, text='Save', font=('arial', 12, 'bold'), width=13, bd=4,
                                        command=iSave)
         self.btnSave.grid(row=0, column=1)
         
-        self.btnDelete=tk.Button(ButtonFrame, text='Delete', font=('arial', 12, 'bold'), width=20, bd=4,
+        self.btnDelete=tk.Button(ButtonFrame, text='Delete', font=('arial', 12, 'bold'), width=13, bd=4,
                                        command=iDelete)
         self.btnDelete.grid(row=0, column=2)
         
-        self.btnReset=tk.Button(ButtonFrame, text='Reset', font=('arial', 12, 'bold'), width=20, bd=4,
+        self.btnReset=tk.Button(ButtonFrame, text='Reset', font=('arial', 12, 'bold'), width=13, bd=4,
                                 command=iReset)
         self.btnReset.grid(row=0, column=3)
         
-        self.btnExit = tk.Button(ButtonFrame, text='Exit', font=('arial', 12, 'bold'), width=20, bd=4, 
+        self.btnExit = tk.Button(ButtonFrame, text='Exit', font=('arial', 12, 'bold'), width=13, bd=4, 
                          command=iExit)
         self.btnExit.grid(row=0, column=4)
 
         #Search
-        self.lblSearch = Label(ButtonFrame, font=('arial', 12, 'bold'), text="Search By", width=19, bd=4)
+        self.lblSearch = Label(ButtonFrame, font=('arial', 12, 'bold'), text="Search By", width=13, bd=4)
         self.lblSearch.grid(row=0, column=5,sticky=W)
+
+        search_combo=ttk.Combobox(ButtonFrame, width=12, font=("arial",13,"bold"), state="readonly")
+        search_combo.grid(row=0, column=6)
+        search_combo["values"]=("Ref", "Medname","Lot")
+        search_combo.grid(row=0,column=6)
+        search_combo.current(0)
+
+        txtSearch = ttk.Entry(ButtonFrame, takefocus=3, style='TEntry', width=12, font=("arial", 13, "bold"))
+        txtSearch.grid(row=0, column=7)
+
+
 
 
 
